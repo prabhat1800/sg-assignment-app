@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-frontend-config
+  labels:
+    app.kubernetes.io/name: assignment-frontend
+data:
+  config.js: |
+    window.APP_CONFIG = {
+      API_BASE_URL: {{ .Values.frontend.apiBaseUrl | quote }}
+    };
