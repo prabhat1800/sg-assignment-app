@@ -51,6 +51,28 @@ jobs:
           severity: CRITICAL,HIGH
           exit-code: "1"
 
+# sonar-analysis:
+#   if: >
+#     (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+#     (github.event_name == 'pull_request' && startsWith(github.head_ref, 'feature/'))
+#   runs-on: ubuntu-latest
+#   needs: backend-tests-and-security
+#   steps:
+#     - name: Checkout
+#       uses: actions/checkout@v5
+#       with:
+#         fetch-depth: 0
+
+#     - name: SonarCloud analysis
+#       uses: SonarSource/sonarqube-scan-action@v6
+#       env:
+#         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#         SONAR_HOST_URL: https://sonarcloud.io
+#       with:
+#         args: >
+#           -Dsonar.projectKey=${{ vars.SONAR_PROJECT_KEY }}
+#           -Dsonar.organization=${{ vars.SONAR_ORGANIZATION }}
+
   build-images:
     if: >
       (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
