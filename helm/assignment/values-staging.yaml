@@ -1,0 +1,32 @@
+environment: dev
+
+backend:
+  replicaCount: 1
+  image:
+    repository: assignment-api-dev # placeholder - overridden by CI/CD with full AR path
+    tag: unset-use-ci-cd-pipeline  # placeholder - overridden by CI/CD with commit SHA
+  allowedOrigins: "http://localhost:8080"
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+
+frontend:
+  replicaCount: 1
+  image:
+    repository: assignment-frontend-dev # placeholder - overridden by CI/CD with full AR path
+    tag: unset-use-ci-cd-pipeline        # placeholder - overridden by CI/CD with commit SHA
+  service:
+    port: 80
+  apiBaseUrl: "http://localhost:8000"
+
+# Ingress is disabled for dev: no Ingress resource will be created regardless
+# of ingress.host / ingress.className values passed in by CD. If dev should
+# also be reachable via Ingress, set enabled: true and provide a real host.
+ingress:
+  enabled: false
+  className: ""
+  host: ""
