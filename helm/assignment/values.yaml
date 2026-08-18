@@ -1,0 +1,39 @@
+backend:
+  replicaCount: 1
+  image:
+    repository: us-central1-docker.pkg.dev/project-39eb557f-9be4-42ee-b0c/gcp-ar/assignment-api
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 8000
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+  allowedOrigins: "http://localhost:8080"
+
+frontend:
+  replicaCount: 1
+  image:
+    repository: us-central1-docker.pkg.dev/project-39eb557f-9be4-42ee-b0c/gcp-ar/assignment-frontend
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 8000
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 200m
+      memory: 128Mi
+  apiBaseUrl: ""
+
+ingress:
+  enabled: false
+  className: ""
+  host: assignment.local
