@@ -1,7 +1,9 @@
+environment: dev
+
 backend:
   replicaCount: 1
   image:
-    repository: us-central1-docker.pkg.dev/project-39eb557f-9be4-42ee-b0c/gcr-repo-dev/assignment-api
+    repository: us-central1-docker.pkg.dev/project-39eb557f-9be4-42ee-b0c/gcr-repo-dev/assignment-api-dev
     tag: latest
     pullPolicy: IfNotPresent
   service:
@@ -19,7 +21,7 @@ backend:
 frontend:
   replicaCount: 1
   image:
-    repository: us-central1-docker.pkg.dev/project-39eb557f-9be4-42ee-b0c/gcr-repo-dev/assignment-frontend
+    repository: us-central1-docker.pkg.dev/project-39eb557f-9be4-42ee-b0c/gcr-repo-dev/assignment-frontend-dev
     tag: latest
     pullPolicy: IfNotPresent
   service:

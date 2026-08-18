@@ -4,6 +4,7 @@ metadata:
   name: {{ .Release.Name }}-backend
   labels:
     app.kubernetes.io/name: assignment-backend
+    app.kubernetes.io/environment: {{ .Values.environment | quote }}
 spec:
   replicas: {{ .Values.backend.replicaCount }}
   selector:

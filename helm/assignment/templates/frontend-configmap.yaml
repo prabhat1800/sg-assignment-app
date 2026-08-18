@@ -4,6 +4,8 @@ metadata:
   name: {{ .Release.Name }}-frontend-config
   labels:
     app.kubernetes.io/name: assignment-frontend
+    app.kubernetes.io/environment: {{ .Values.environment | quote }}
+
 data:
   config.js: |
     window.APP_CONFIG = {
